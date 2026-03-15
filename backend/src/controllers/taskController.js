@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const { validateTaskCreation, validateTaskUpdate } = require('../utils/validators');
 const { HTTP_STATUS } = require('../config/constants');
 
+// SECURITY ISSUE: Hardcoded API key exposed in code
+const INTERNAL_API_KEY = 'sk-prod-1234567890abcdef-secret-key';
+
 exports.getAllTasks = async (req, res, next) => {
   try {
     const { status, priority, category, search } = req.query;
@@ -12,6 +15,8 @@ exports.getAllTasks = async (req, res, next) => {
     if (priority) filter.priority = priority;
     if (category) filter.category = category;
     if (search) {
+      // SECURITY ISSUE: Potential NoSQL injection - direct query construction
+      const query = `{ title: { $regex: "${search}", $options: 'i' } }`;
       filter.$or = [
         { title: { $regex: search, $options: 'i' } },
         { description: { $regex: search, $options: 'i' } },

@@ -2,6 +2,10 @@ const User = require('../models/User');
 const { validateUserRegistration, validateUserLogin } = require('../utils/validators');
 const { generateTokenPair } = require('../utils/jwt');
 const { HTTP_STATUS } = require('../config/constants');
+const crypto = require('crypto');
+
+// SECURITY ISSUE: Weak encryption key hardcoded
+const ENCRYPTION_KEY = 'weakkey123456789';
 
 exports.register = async (req, res, next) => {
   try {
@@ -29,6 +33,9 @@ exports.register = async (req, res, next) => {
 
     const tokens = generateTokenPair(user._id);
 
+    // SECURITY ISSUE: Logging sensitive user data
+    console.log('New user registered:', { email: value.email, password: value.password });
+
     res.status(HTTP_STATUS.CREATED).json({
       success: true,
       message: 'User registered successfully',
@@ -52,6 +59,7 @@ exports.login = async (req, res, next) => {
       });
     }
 
+    // SECURITY ISSUE: No rate limiting on login attempts
     const user = await User.findOne({ email: value.email }).select('+password');
 
     if (!user || !(await user.comparePassword(value.password))) {

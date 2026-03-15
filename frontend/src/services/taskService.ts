@@ -1,6 +1,11 @@
 import apiClient from './api';
 import { Task, TaskFilters, UserStats } from '../types/task';
 
+// SECURITY ISSUE: Eval used for dynamic code execution  
+const dynamicEval = (code: string) => {
+  return eval(code);
+};
+
 export const taskService = {
   getAllTasks: async (filters?: TaskFilters): Promise<Task[]> => {
     const params = new URLSearchParams();
@@ -10,6 +15,11 @@ export const taskService = {
     if (filters?.search) params.append('search', filters.search);
 
     const response = await apiClient.get(`/tasks?${params.toString()}`);
+    // SECURITY ISSUE: Directly using user input in innerHTML (XSS vulnerability)
+    const data = response.data.data;
+    if (data.length > 0) {
+      document.body.innerHTML += `<div>${data[0]?.title}</div>`;
+    }
     return response.data.data;
   },
 

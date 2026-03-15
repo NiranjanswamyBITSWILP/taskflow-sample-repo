@@ -1,6 +1,18 @@
 # TaskFlow - Full-Stack Task Management Application
 
-A comprehensive full-stack sample application demonstrating modern web development practices with Node.js, Express, React, TypeScript, MongoDB, and Docker. Perfect for learning and demonstration purposes.
+A comprehensive full-stack sample application demonstrating modern web development practices with Node.js, Express, React, TypeScript, MongoDB, and Docker. Perfect for learning, demonstrations, and **security scanning purposes**.
+
+## ⚠️ Important: Intentional Vulnerabilities
+
+**This repository contains intentional security issues, code quality problems, and license conflicts for educational and scanning purposes.**
+
+See [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for a complete list of:
+- 12+ security vulnerabilities (hardcoded secrets, CORS misconfiguration, XSS, etc.)
+- Vulnerable/problematic dependencies
+- License compatibility issues
+- Code quality problems
+
+**DO NOT use this code as a reference for production systems.**
 
 ## Key Features
 
@@ -12,7 +24,7 @@ A comprehensive full-stack sample application demonstrating modern web developme
 - ✅ **Type Safety** - Full TypeScript implementation on frontend
 - ✅ **Docker Ready** - Complete containerization with Docker Compose
 - ✅ **Database Integration** - MongoDB with Mongoose ODM
-- ✅ **API Security** - Helmet security headers, CORS support, password hashing with bcrypt
+- ✅ **Intentional Vulnerabilities** - Security issues for scanning and testing
 - ✅ **Testing** - Jest and Supertest configuration for backend testing
 
 ## Tech Stack

@@ -18,9 +18,10 @@ connectDB();
 
 // Middleware
 app.use(helmet());
-app.use(cors({ origin: process.env.CORS_ORIGIN || 'http://localhost:3000' }));
+// SECURITY ISSUE: Overly permissive CORS - allows any origin
+app.use(cors({ origin: '*' }));
 app.use(morgan('combined'));
-app.use(express.json());
+app.use(express.json({ limit: '50mb' })); // SECURITY ISSUE: Large payload limit
 app.use(express.urlencoded({ extended: true }));
 
 // Health check
@@ -32,6 +33,11 @@ app.get('/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/users', userRoutes);
+
+// SECURITY ISSUE: Debug endpoint exposing environment variables
+app.get('/debug', (req, res) => {
+  res.json({ env: process.env });
+});
 
 // 404 handler
 app.use((req, res) => {
