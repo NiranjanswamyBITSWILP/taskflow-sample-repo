@@ -1,0 +1,62 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+package-lock.json
+yarn.lock
+
+# Testing
+coverage
+*.lcov
+.test
+
+# Production
+build
+dist
+out
+.next
+.nuxt
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Cache
+.cache
+.eslintcache
+.jest-cache
+
+# Database
+*.db
+*.sqlite
+mongodb-data/
+
+# Misc
+.serverless
+.tern-port
+
+*.json
+*.xml
+*.json
+*.csv
+*.txt
