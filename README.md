@@ -2,17 +2,15 @@
 
 A comprehensive full-stack sample application demonstrating modern web development practices with Node.js, Express, React, TypeScript, MongoDB, and Docker. Perfect for learning, demonstrations, and **security scanning purposes**.
 
-## ⚠️ Important: Intentional Vulnerabilities
+## ⚠️ Important: Educational Purpose Only
 
-**This repository contains intentional security issues, code quality problems, and license conflicts for educational and scanning purposes.**
+**This repository is for educational purposes only. Do not use this code as actual source code or as a reference for production systems.** It contains intentional security issues, code quality problems, and license conflicts designed for learning and scanning demonstrations.
 
 See [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for a complete list of:
 - 12+ security vulnerabilities (hardcoded secrets, CORS misconfiguration, XSS, etc.)
 - Vulnerable/problematic dependencies
 - License compatibility issues
 - Code quality problems
-
-**DO NOT use this code as a reference for production systems.**
 
 ## Key Features
 
@@ -274,3 +272,4 @@ For issues and questions:
 ## Acknowledgments
 
 Built as a demonstration of modern full-stack development practices with Node.js, React, MongoDB, and Docker.
+
